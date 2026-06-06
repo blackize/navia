@@ -15,12 +15,6 @@ struct MainTabView: View {
                     Text("Explore")
                 }
             
-            SearchView()
-                .tabItem {
-                    Image(systemName: "search")
-                    Text("Search")
-                }
-            
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")
