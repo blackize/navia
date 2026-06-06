@@ -3,9 +3,11 @@ import AVKit
 
 struct LessonPlayerView: View {
     var lesson: Lesson
+    var pathId: String
     @StateObject private var playerService = VideoPlayerService()
     @State private var playbackSpeed: Float = 1.0
     @State private var showingSettings = false
+    @State private var isCompleted = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -71,10 +73,11 @@ struct LessonPlayerView: View {
                     }
                     .font(.title2)
                     
-                    Button("Next lesson") {
-                        // Navigate to next lesson
+                    Button(isCompleted ? "Completed" : "Mark as Complete") {
+                        markLessonComplete()
                     }
                     .buttonStyle(.borderedProminent)
+                    .disabled(isCompleted)
                 }
                 .padding()
             }
@@ -82,6 +85,18 @@ struct LessonPlayerView: View {
         .sheet(isPresented: $showingSettings) {
             SettingsView(playbackSpeed: $playbackSpeed)
         }
+        .onDisappear {
+            ProgressService.shared.setLastWatchedLesson(lesson.id, pathId: pathId)
+        }
+    }
+    
+    private func markLessonComplete() {
+        isCompleted = true
+        ProgressService.shared.updateProgress(
+            pathId: pathId,
+            lessonId: lesson.id,
+            completionPercent: 100
+        )
     }
     
     private func formatTime(_ time: Double) -> String {
@@ -113,6 +128,6 @@ struct SettingsView: View {
 
 struct LessonPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlayerView(lesson: Lesson(id: "1", title: "Test Lesson", videoURL: "https://example.com/video.mp4", duration: "10 min"))
+        LessonPlayerView(lesson: Lesson(id: "1", title: "Test Lesson", videoURL: "https://example.com/video.mp4", duration: "10 min"), pathId: "1")
     }
 }

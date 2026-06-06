@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var selectedLesson: Lesson?
+    @State private var selectedPathId: String?
     
     var body: some View {
         NavigationView {
@@ -13,7 +14,10 @@ struct HomeView: View {
                     
                     if let lastLesson = viewModel.lastWatchedLesson {
                         LessonRow(lesson: lastLesson)
-                            .onTapGesture { selectedLesson = lastLesson }
+                            .onTapGesture { 
+                                selectedLesson = lastLesson
+                                selectedPathId = viewModel.recommendedPath?.id
+                            }
                     }
                     
                     Text("Your AI Career Path")
@@ -21,7 +25,10 @@ struct HomeView: View {
                     
                     if let path = viewModel.recommendedPath {
                         CareerPathCard(path: path)
-                            .onTapGesture { selectedLesson = path.modules.first?.lessons.first }
+                            .onTapGesture { 
+                                selectedLesson = path.modules.first?.lessons.first
+                                selectedPathId = path.id
+                            }
                     }
                     
                     Text("Explore Paths")
@@ -29,14 +36,19 @@ struct HomeView: View {
                     
                     ForEach(viewModel.alternativePaths) { path in
                         CareerPathCard(path: path)
-                            .onTapGesture { selectedLesson = path.modules.first?.lessons.first }
+                            .onTapGesture { 
+                                selectedLesson = path.modules.first?.lessons.first
+                                selectedPathId = path.id
+                            }
                     }
                 }
                 .padding()
             }
             .navigationTitle("NAVIA")
             .sheet(item: $selectedLesson) { lesson in
-                LessonPlayerView(lesson: lesson)
+                if let pathId = selectedPathId {
+                    LessonPlayerView(lesson: lesson, pathId: pathId)
+                }
             }
         }
     }
