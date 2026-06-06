@@ -46,6 +46,15 @@ class OnboardingViewModel: ObservableObject {
     @Published var selectedGoalRaw: String?
     @Published var selectedTimeRaw: String?
     
+    var answers: OnboardingAnswers {
+        OnboardingAnswers(
+            interest: selectedInterest?.rawValue,
+            experience: selectedExperience?.rawValue,
+            goal: selectedGoal?.rawValue,
+            time: selectedTime?.rawValue
+        )
+    }
+    
     var selectedInterest: Interest? {
         get { Interest(rawValue: selectedInterestRaw ?? "") }
         set { selectedInterestRaw = newValue?.rawValue }
@@ -67,9 +76,5 @@ class OnboardingViewModel: ObservableObject {
             return TimeAvailability(rawValue: val)
         }
         set { selectedTimeRaw = newValue != nil ? String(newValue!.rawValue) : nil }
-    }
-    
-    var canComplete: Bool {
-        selectedInterest != nil && selectedExperience != nil && selectedGoal != nil && selectedTime != nil
     }
 }

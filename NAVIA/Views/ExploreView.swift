@@ -22,21 +22,7 @@ struct ExploreView: View {
             }
             .navigationTitle("Explore")
             .searchable(text: $searchText)
-            .onAppear { paths = mockPaths() }
-        }
-    }
-    
-    private func mockPaths() -> [CareerPath] {
-        (1...11).map { i in
-            CareerPath(
-                id: "\(i)",
-                title: ["Frontend Developer", "QA Engineer", "Python Developer", "DevOps Engineer", "Cybersecurity Specialist", "Data Analyst", "Flutter Developer", "Swift iOS Developer", "IT Project Manager", "Business Analyst", "Vibe Coding"][i-1],
-                description: "Learn \(i) skills",
-                modules: [],
-                duration: "\(i) weeks",
-                difficulty: ["Beginner", "Intermediate", "Advanced"][i % 3],
-                outcome: "Become Expert #\(i)"
-            )
+            .onAppear { paths = CourseService.shared.getCoursePaths() }
         }
     }
 }
