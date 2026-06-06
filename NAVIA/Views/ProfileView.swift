@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var user: User?
+    @State private var showingSubscription = false
     
     var body: some View {
         NavigationView {
@@ -26,8 +27,12 @@ struct ProfileView: View {
                 }
                 
                 Section("Subscription") {
-                    Button("Manage Subscription") { }
-                    Button("Restore Purchase") { }
+                    Button("Manage Subscription") {
+                        showingSubscription = true
+                    }
+                    Button("Restore Purchase") {
+                        restorePurchases()
+                    }
                 }
                 
                 Section("Support") {
@@ -38,11 +43,18 @@ struct ProfileView: View {
             }
             .navigationTitle("Profile")
             .onAppear { user = mockUser() }
+            .sheet(isPresented: $showingSubscription) {
+                SubscriptionView()
+            }
         }
     }
     
     private func mockUser() -> User {
         User(id: "1", email: "user@example.com", subscriptionStatus: .active)
+    }
+    
+    private func restorePurchases() {
+        print("Restoring purchases...")
     }
 }
 
