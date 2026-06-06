@@ -21,6 +21,11 @@ struct OnboardingView: View {
                     email: $email,
                     password: $password
                 )
+                Text("or")
+                    .foregroundColor(.secondary)
+                AppleSignInButton(onSuccess: { user in
+                    print("Apple Sign-In: \(user.email)")
+                })
             case 2:
                 SelectionView(
                     title: "What interests you?",
