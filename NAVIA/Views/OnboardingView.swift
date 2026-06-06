@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    var onboardingCompleted: () -> Void
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var step = 1
     
@@ -71,6 +72,7 @@ struct OnboardingView: View {
     
     private func completeOnboarding() {
         print("Onboarding completed!")
+        onboardingCompleted()
     }
 }
 
@@ -101,6 +103,6 @@ struct SelectionView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
+        OnboardingView(onboardingCompleted: {})
     }
 }

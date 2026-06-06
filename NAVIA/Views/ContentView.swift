@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isActive = false
     @State private var showOnboarding = true
     
     var body: some View {
         NavigationView {
             if showOnboarding {
-                OnboardingView()
+                OnboardingView(onboardingCompleted: {
+                    showOnboarding = false
+                })
             } else {
                 MainTabView()
             }
