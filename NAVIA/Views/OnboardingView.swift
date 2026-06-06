@@ -4,38 +4,49 @@ struct OnboardingView: View {
     var onboardingCompleted: () -> Void
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var step = 1
+    @State private var email = ""
+    @State private var password = ""
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Step \(step) of 4")
+            Text("Step \(step) of 6")
                 .font(.caption)
                 .foregroundColor(.secondary)
             
             switch step {
             case 1:
+                AuthInputView(
+                    title: "Welcome to NAVIA",
+                    subtitle: "Sign in to continue",
+                    email: $email,
+                    password: $password
+                )
+            case 2:
                 SelectionView(
                     title: "What interests you?",
                     options: Interest.allCases.map { $0.rawValue },
                     selection: $viewModel.selectedInterestRaw
                 )
-            case 2:
+            case 3:
                 SelectionView(
                     title: "Your experience level?",
                     options: ExperienceLevel.allCases.map { $0.rawValue },
                     selection: $viewModel.selectedExperienceRaw
                 )
-            case 3:
+            case 4:
                 SelectionView(
                     title: "What's your goal?",
                     options: Goal.allCases.map { $0.rawValue },
                     selection: $viewModel.selectedGoalRaw
                 )
-            case 4:
+            case 5:
                 SelectionView(
                     title: "Time availability?",
                     options: TimeAvailability.allCases.map { $0.displayText },
                     selection: $viewModel.selectedTimeRaw
                 )
+            case 6:
+                ResultView()
             default:
                 EmptyView()
             }
@@ -43,7 +54,7 @@ struct OnboardingView: View {
             Spacer()
             
             Button(action: nextStep) {
-                Text(step == 4 ? "Get My Career Plan" : "Continue")
+                Text(step == 6 ? "Get My Career Plan" : "Continue")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
@@ -54,16 +65,18 @@ struct OnboardingView: View {
     
     private var canProceed: Bool {
         switch step {
-        case 1: return viewModel.selectedInterestRaw != nil
-        case 2: return viewModel.selectedExperienceRaw != nil
-        case 3: return viewModel.selectedGoalRaw != nil
-        case 4: return viewModel.selectedTimeRaw != nil
+        case 1: return !email.isEmpty && !password.isEmpty
+        case 2: return viewModel.selectedInterestRaw != nil
+        case 3: return viewModel.selectedExperienceRaw != nil
+        case 4: return viewModel.selectedGoalRaw != nil
+        case 5: return viewModel.selectedTimeRaw != nil
+        case 6: return true
         default: return false
         }
     }
     
     private func nextStep() {
-        if step < 4 {
+        if step < 6 {
             step += 1
         } else {
             completeOnboarding()
@@ -71,8 +84,50 @@ struct OnboardingView: View {
     }
     
     private func completeOnboarding() {
-        print("Onboarding completed!")
         onboardingCompleted()
+    }
+}
+
+struct AuthInputView: View {
+    var title: String
+    var subtitle: String
+    @Binding var email: String
+    @Binding var password: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text(title)
+                .font(.title)
+                .bold()
+            Text(subtitle)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            TextField("Email", text: $email)
+                .textFieldStyle(.roundedBorder)
+                .keyboardType(.emailAddress)
+            
+            SecureField("Password", text: $password)
+                .textFieldStyle(.roundedBorder)
+            
+            Button("Sign In") { }
+                .buttonStyle(.borderedProminent)
+        }
+    }
+}
+
+struct ResultView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "heart.text.square")
+                .font(.system(size: 60))
+                .foregroundColor(.blue)
+            Text("Your AI Career Plan")
+                .font(.title)
+            Text("NAVIA will recommend the best career path for you")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+        }
     }
 }
 
