@@ -12,7 +12,9 @@ class HomeViewModel: ObservableObject {
     func loadCourses() async {
         isLoading = true
         do {
+            print("Loading courses from GitHub...")
             let paths = try await CourseService.shared.fetchCoursesFromGitHub()
+            print("Loaded \(paths.count) courses")
             recommendedPath = paths.first
             alternativePaths = Array(paths.dropFirst().prefix(2))
             
