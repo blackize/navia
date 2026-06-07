@@ -128,6 +128,6 @@ struct SettingsView: View {
 
 struct LessonPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlayerView(lesson: Lesson(id: "1", title: "Test Lesson", videoURL: "https://example.com/video.mp4", duration: "10 min"), pathId: "1")
+        LessonPlayerView(lesson: Lesson(id: "1", title: "Test Lesson", vimeoID: "123456789", duration: "10 min"), pathId: "1")
     }
 }
