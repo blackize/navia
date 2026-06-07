@@ -8,7 +8,7 @@
       "duration": "8 modules",
       "difficulty": "Beginner",
       "modules": [
-        {"id": "m1", "title": "Module 1. Вступ в IT", "lessons": [{"id": "l1", "title": "Intro to IT", "vimeo_id": "1199137746", "duration": "01:01:16", "video_url": "https://vimeo.com/1199137746"}]},
+        {"id": "m1", "title": "Module 1. Вступ в IT", "lessons": [{"id": "l1", "title": "Intro to IT", "vimeo_id": "1108492877", "duration": "01:01:16", "video_url": "https://vimeo.com/1108492877"}]},
         {"id": "m2", "title": "Module 2. Знайомство з QA", "lessons": [{"id": "l2", "title": "Intro to QA", "vimeo_id": "1109425372", "duration": "01:24:28", "video_url": "https://vimeo.com/1109425372"}]},
         {"id": "m3", "title": "Module 3. Знайомство з IT Project Management", "lessons": [{"id": "l3", "title": "Intro to Project Management", "vimeo_id": "1110330953", "duration": "01:05:55", "video_url": "https://vimeo.com/1110330953"}]},
         {"id": "m4", "title": "Module 4. Знайомство з Flutter", "lessons": [{"id": "l4", "title": "Intro to Flutter", "vimeo_id": "1018035978", "duration": "01:54:00", "video_url": "https://vimeo.com/1018035978"}]},
