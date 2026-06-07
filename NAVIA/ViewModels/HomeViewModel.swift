@@ -8,34 +8,31 @@ class HomeViewModel: ObservableObject {
     @Published var lastWatchedLesson: Lesson?
     @Published var isLoading = false
     
-    init() {
-        loadCourses()
+    @MainActor
+    func loadCourses() async {
+        isLoading = true
+        do {
+            let paths = try await CourseService.shared.fetchCoursesFromGitHub()
+            recommendedPath = paths.first
+            alternativePaths = Array(paths.dropFirst().prefix(2))
+            
+            if let firstPath = recommendedPath,
+               let firstModule = firstPath.modules.first,
+               let firstLesson = firstModule.lessons.first {
+                lastWatchedLesson = firstLesson
+            }
+        } catch {
+            print("Failed to load courses from GitHub: \(error)")
+            let paths = CourseService.shared.getCoursePaths()
+            recommendedPath = paths.first
+            alternativePaths = Array(paths.dropFirst().prefix(2))
+        }
+        isLoading = false
     }
     
-    private func loadCourses() {
+    init() {
         Task {
-            isLoading = true
-            do {
-                let paths = try await CourseService.shared.fetchCoursesFromGitHub()
-                await MainActor.run {
-                    recommendedPath = paths.first
-                    alternativePaths = Array(paths.dropFirst().prefix(2))
-                    
-                    if let firstPath = recommendedPath,
-                       let firstModule = firstPath.modules.first,
-                       let firstLesson = firstModule.lessons.first {
-                        lastWatchedLesson = firstLesson
-                    }
-                }
-            } catch {
-                print("Failed to load courses: \(error)")
-                await MainActor.run {
-                    let paths = CourseService.shared.getCoursePaths()
-                    recommendedPath = paths.first
-                    alternativePaths = Array(paths.dropFirst().prefix(2))
-                }
-            }
-            isLoading = false
+            await loadCourses()
         }
     }
 }
