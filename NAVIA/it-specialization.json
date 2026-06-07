@@ -1,0 +1,22 @@
+{
+  "courses": [
+    {
+      "id": "it-specialization",
+      "title": "IT Specialization Basic Course",
+      "description": "Introduction to IT specialization",
+      "outcome": "Become IT Specialist",
+      "duration": "8 modules",
+      "difficulty": "Beginner",
+      "modules": [
+        {"id": "m1", "title": "Module 1. Вступ в IT", "lessons": [{"id": "l1", "title": "Intro to IT", "youtube_id": "k5Rzs7K7o-8", "duration": "01:01:16"}]},
+        {"id": "m2", "title": "Module 2. Introduction to QA", "lessons": [{"id": "l2", "title": "Intro to QA", "youtube_id": "NWNBrKHZRn8", "duration": "01:24:28"}]},
+        {"id": "m3", "title": "Module 3. IT Project Management", "lessons": [{"id": "l3", "title": "Intro to Project Management", "youtube_id": "8CQGLEYshR4", "duration": "01:05:55"}]},
+        {"id": "m4", "title": "Module 4. Introduction to Flutter", "lessons": [{"id": "l4", "title": "Intro to Flutter", "youtube_id": "sCdtRoRtL-8", "duration": "01:54:00"}]},
+        {"id": "m5", "title": "Module 5. Business Analysis", "lessons": [{"id": "l5", "title": "Intro to BA", "youtube_id": "aN7NVIgMpBY", "duration": "01:00:47"}]},
+        {"id": "m6", "title": "Module 6. Front-End Development", "lessons": [{"id": "l6", "title": "Intro to Front-End", "youtube_id": "9t72rbD5LK8", "duration": "01:17:54"}]},
+        {"id": "m7", "title": "Module 7. IT Product Management", "lessons": [{"id": "l7", "title": "Intro to Product Management", "youtube_id": "fJXKmEzt6bA", "duration": "01:00:09"}]},
+        {"id": "m8", "title": "Module 8. Data Analytics", "lessons": [{"id": "l8", "title": "Intro to Data Analytics", "youtube_id": "PGbtN66Ov2Y", "duration": "01:12:15"}]}
+      ]
+    }
+  ]
+}
