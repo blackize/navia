@@ -12,9 +12,7 @@ class HomeViewModel: ObservableObject {
     func loadCourses() async {
         isLoading = true
         do {
-            print("Loading courses from GitHub...")
-            let paths = try await CourseService.shared.fetchCoursesFromGitHub()
-            print("Loaded \(paths.count) courses")
+            let paths = try await CourseService.shared.fetchCourses()
             recommendedPath = paths.first
             alternativePaths = Array(paths.dropFirst().prefix(2))
             
@@ -24,10 +22,7 @@ class HomeViewModel: ObservableObject {
                 lastWatchedLesson = firstLesson
             }
         } catch {
-            print("Failed to load courses from GitHub: \(error)")
-            let paths = CourseService.shared.getCoursePaths()
-            recommendedPath = paths.first
-            alternativePaths = Array(paths.dropFirst().prefix(2))
+            print("Failed to load courses: \(error)")
         }
         isLoading = false
     }

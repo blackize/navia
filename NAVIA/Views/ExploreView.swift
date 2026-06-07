@@ -22,7 +22,7 @@ struct ExploreView: View {
             }
             .navigationTitle("Explore")
             .searchable(text: $searchText)
-            .onAppear { paths = CourseService.shared.getCoursePaths() }
+            .onAppear { Task { paths = (try? await CourseService.shared.fetchCourses()) ?? [] } }
         }
     }
 }
