@@ -8,14 +8,14 @@
       "duration": "8 modules",
       "difficulty": "Beginner",
       "modules": [
-        {"id": "m1", "title": "Module 1. Introduction to IT", "lessons": [{"id": "l1", "title": "Intro to IT", "vimeo_id": "1108492877", "duration": "01:01:16"}]},
-        {"id": "m2", "title": "Module 2. Introduction to QA", "lessons": [{"id": "l2", "title": "Intro to QA", "vimeo_id": "1109425372", "duration": "01:24:28"}]},
-        {"id": "m3", "title": "Module 3. Introduction to IT Project Management", "lessons": [{"id": "l3", "title": "Intro to Project Management", "vimeo_id": "1110330953", "duration": "01:05:55"}]},
-        {"id": "m4", "title": "Module 4. Introduction to Flutter", "lessons": [{"id": "l4", "title": "Intro to Flutter", "vimeo_id": "1018035978", "duration": "01:54:00"}]},
-        {"id": "m5", "title": "Module 5. Introduction to Business Analysis", "lessons": [{"id": "l5", "title": "Intro to BA", "vimeo_id": "1111393280", "duration": "01:00:47"}]},
-        {"id": "m6", "title": "Module 6. Introduction to Front-End Development", "lessons": [{"id": "l6", "title": "Intro to Front-End", "vimeo_id": "1105549850", "duration": "01:17:54"}]},
-        {"id": "m7", "title": "Module 7. Introduction to IT Product Management", "lessons": [{"id": "l7", "title": "Intro to Product Management", "vimeo_id": "1104546148", "duration": "01:00:09"}]},
-        {"id": "m8", "title": "Module 8. Introduction to Data Analytics", "lessons": [{"id": "l8", "title": "Intro to Data Analytics", "vimeo_id": "1103540532", "duration": "01:12:15"}]}
+        {"id": "m1", "title": "Module 1. Вступ в IT", "lessons": [{"id": "l1", "title": "Intro to IT", "vimeo_id": "1199137746", "duration": "01:01:16", "video_url": "https://vimeo.com/1199137746"}]},
+        {"id": "m2", "title": "Module 2. Знайомство з QA", "lessons": [{"id": "l2", "title": "Intro to QA", "vimeo_id": "1109425372", "duration": "01:24:28", "video_url": "https://vimeo.com/1109425372"}]},
+        {"id": "m3", "title": "Module 3. Знайомство з IT Project Management", "lessons": [{"id": "l3", "title": "Intro to Project Management", "vimeo_id": "1110330953", "duration": "01:05:55", "video_url": "https://vimeo.com/1110330953"}]},
+        {"id": "m4", "title": "Module 4. Знайомство з Flutter", "lessons": [{"id": "l4", "title": "Intro to Flutter", "vimeo_id": "1018035978", "duration": "01:54:00", "video_url": "https://vimeo.com/1018035978"}]},
+        {"id": "m5", "title": "Module 5. Знайомство з Бізнес-аналіз (BA)", "lessons": [{"id": "l5", "title": "Intro to BA", "vimeo_id": "1111393280", "duration": "01:00:47", "video_url": "https://vimeo.com/1111393280"}]},
+        {"id": "m6", "title": "Module 6. Знайомство з Front-End розробка", "lessons": [{"id": "l6", "title": "Intro to Front-End", "vimeo_id": "1105549850", "duration": "01:17:54", "video_url": "https://vimeo.com/1105549850"}]},
+        {"id": "m7", "title": "Module 7. Знайомство з IT Product Management", "lessons": [{"id": "l7", "title": "Intro to Product Management", "vimeo_id": "1104546148", "duration": "01:00:09", "video_url": "https://vimeo.com/1104546148"}]},
+        {"id": "m8", "title": "Module 8. Знайомство з Data Analytics", "lessons": [{"id": "l8", "title": "Intro to Data Analytics", "vimeo_id": "1103540532", "duration": "01:12:15", "video_url": "https://vimeo.com/1103540532"}]}
       ]
     }
   ]
